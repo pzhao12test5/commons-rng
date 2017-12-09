@@ -30,6 +30,10 @@ public abstract class IntProvider
 
     /** {@inheritDoc} */
     @Override
+    public abstract int next();
+
+    /** {@inheritDoc} */
+    @Override
     public int nextInt() {
         return next();
     }
