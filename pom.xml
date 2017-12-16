@@ -25,7 +25,7 @@
   <groupId>org.apache.commons</groupId>
   <artifactId>commons-rng-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
   <name>Apache Commons RNG</name>
 
   <inceptionYear>2016</inceptionYear>
@@ -84,7 +84,6 @@
     <commons.componentid>rng</commons.componentid>
     <!-- This value must reflect the current name of the base package. -->
     <commons.osgi.symbolicName>org.apache.commons.rng</commons.osgi.symbolicName>
-    <commons.module.name>org.apache.commons.rng</commons.module.name>
     <!-- OSGi -->
     <commons.osgi.export>org.apache.commons.rng</commons.osgi.export>
     <!-- do not use snapshot suffix here -->
@@ -209,8 +208,8 @@
         <artifactId>apache-rat-plugin</artifactId>
         <version>${commons.rat.version}</version>
         <configuration>
-        <!--
-          Needed for command-line access, e.g mvn apache-rat:rat and mvn apache-rat:check
+        <!-- 
+          Needed for command-line access, e.g mvn apache-rat:rat and mvn apache-rat:check 
           Below should agree with config in <reporting> section, so the site
           gets consistent output.
         -->
@@ -362,7 +361,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
-          <additionalparam>-Xdoclint:all --allow-script-in-comments -header '&lt;script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;&lt;/script&gt;'</additionalparam>
+          <additionalparam>-Xdoclint:all -header '&lt;script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;&lt;/script&gt;'</additionalparam>
           <!-- <aggregate>true</aggregate> -->
         </configuration>
       </plugin>
