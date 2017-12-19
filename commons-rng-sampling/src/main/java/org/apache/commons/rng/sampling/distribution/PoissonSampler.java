@@ -46,7 +46,7 @@ public class PoissonSampler
     /** Exponential. */
     private final ContinuousSampler exponential;
     /** Gaussian. */
-    private final NormalizedGaussianSampler gaussian;
+    private final ContinuousSampler gaussian;
     /** {@code log(n!)}. */
     private final InternalUtils.FactorialLog factorialLog;
 
@@ -64,7 +64,7 @@ public class PoissonSampler
 
         this.mean = mean;
 
-        gaussian = new MarsagliaNormalizedGaussianSampler(rng);
+        gaussian = new BoxMullerGaussianSampler(rng, 0, 1);
         exponential = new AhrensDieterExponentialSampler(rng, 1);
         factorialLog = mean < PIVOT ?
             null : // Not used.
@@ -118,13 +118,13 @@ public class PoissonSampler
             final double p2 = a2 / aSum;
             final double c1 = 1 / (8 * lambda);
 
-            double x;
-            double y;
-            double v;
-            int a;
-            double t;
-            double qr;
-            double qa;
+            double x = 0;
+            double y = 0;
+            double v = 0;
+            int a = 0;
+            double t = 0;
+            double qr = 0;
+            double qa = 0;
             while (true) {
                 final double u = nextDouble();
                 if (u <= p1) {

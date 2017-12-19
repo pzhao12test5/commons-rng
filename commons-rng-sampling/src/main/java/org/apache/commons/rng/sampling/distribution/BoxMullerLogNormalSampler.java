@@ -30,7 +30,7 @@ public class BoxMullerLogNormalSampler
     /** Shape. */
     private final double shape;
     /** Gaussian sampling. */
-    private final NormalizedGaussianSampler gaussian;
+    private final BoxMullerGaussianSampler gaussian;
 
     /**
      * @param rng Generator of uniformly distributed random numbers.
@@ -43,7 +43,7 @@ public class BoxMullerLogNormalSampler
         super(null); // Not used.
         this.scale = scale;
         this.shape = shape;
-        gaussian = new BoxMullerNormalizedGaussianSampler(rng);
+        gaussian = new BoxMullerGaussianSampler(rng, 0, 1);
     }
 
     /** {@inheritDoc} */

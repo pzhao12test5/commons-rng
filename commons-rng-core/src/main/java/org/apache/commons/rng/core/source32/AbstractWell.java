@@ -107,7 +107,8 @@ public abstract class AbstractWell extends IntProvider {
         // of w bits blocks, w is the block size (always 32 in the original paper)
         // and p is the number of unused bits in the last block
         final int w = 32;
-        return (k + w - 1) / w;
+        final int r = (k + w - 1) / w;
+        return r;
     }
 
     /**
