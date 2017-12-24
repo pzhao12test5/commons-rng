@@ -19,10 +19,12 @@ package org.apache.commons.rng.sampling.distribution;
 import org.apache.commons.rng.UniformRandomProvider;
 
 /**
- * <a href="https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform">
- * Box-Muller algorithm</a> for sampling from a Log normal distribution.
+ * <a href="https://en.wikipedia.org/wiki/Marsaglia_polar_method">
+ * polar method</a> for sampling from a Log normal distribution.
+ *
+ * @since 1.1
  */
-public class BoxMullerLogNormalSampler
+public class MarsagliaLogNormalSampler
     extends SamplerBase
     implements ContinuousSampler {
     /** Scale. */
@@ -37,13 +39,13 @@ public class BoxMullerLogNormalSampler
      * @param scale Scale of the Log normal distribution.
      * @param shape Shape of the Log normal distribution.
      */
-    public BoxMullerLogNormalSampler(UniformRandomProvider rng,
+    public MarsagliaLogNormalSampler(UniformRandomProvider rng,
                                      double scale,
                                      double shape) {
         super(null); // Not used.
         this.scale = scale;
         this.shape = shape;
-        gaussian = new BoxMullerNormalizedGaussianSampler(rng);
+        gaussian = new MarsagliaNormalizedGaussianSampler(rng);
     }
 
     /** {@inheritDoc} */
@@ -55,6 +57,6 @@ public class BoxMullerLogNormalSampler
     /** {@inheritDoc} */
     @Override
     public String toString() {
-        return "Box-Muller Log Normal [" + gaussian.toString() + "]";
+        return "Marsaglia Log Normal [" + gaussian.toString() + "]";
     }
 }
