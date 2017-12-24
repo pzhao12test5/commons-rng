@@ -42,11 +42,11 @@ public class CollectionSampler<T> {
      * @param rng Generator of uniformly distributed random numbers.
      * @param collection Collection to be sampled.
      * A (shallow) copy will be stored in the created instance.
-     * @throws IllegalArgumentException if {@code collection} is empty.
+     * @throws IllegalArgumentException if {@code collection.size() <= 0}.
      */
     public CollectionSampler(UniformRandomProvider rng,
                              Collection<T> collection) {
-        if (collection.isEmpty()) {
+        if (collection.size() <= 0) {
             throw new IllegalArgumentException("Empty collection");
         }
 
@@ -55,9 +55,16 @@ public class CollectionSampler<T> {
     }
 
     /**
-     * Picks one of the items from the
-     * {@link #CollectionSampler(UniformRandomProvider,Collection)
-     * collection passed to the constructor}.
+     * Picks one of the items in the given {@code collection}.
+     *
+     * <p>
+     * Sampling is without replacement; but if the source collection
+     * contains identical objects, the sample may include repeats.
+     * </p>
+     * <p>
+     * There is no guarantee that the concrete type of the returned
+     * collection is the same as the source collection.
+     * </p>
      *
      * @return a random sample.
      */
